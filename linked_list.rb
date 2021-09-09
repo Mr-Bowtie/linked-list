@@ -37,6 +37,14 @@ class LinkedList
     end
     count
   end
+
+  def head
+    @head
+  end
+
+  def tail
+    @tail
+  end
 end
 
 new_list = LinkedList.new
@@ -44,3 +52,5 @@ new_list.prepend(3)
 new_list.prepend(2)
 new_list.prepend(1)
 p new_list.size
+p new_list.head
+p new_list.tail

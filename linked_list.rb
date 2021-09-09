@@ -45,12 +45,20 @@ class LinkedList
   def tail
     @tail
   end
+
+  def at(index)
+    current_node = @head
+    1.upto(index) do
+      current_node = current_node.next_node
+    end
+    current_node
+  end
 end
 
 new_list = LinkedList.new
 new_list.prepend(3)
 new_list.prepend(2)
 new_list.prepend(1)
-p new_list.size
-p new_list.head
-p new_list.tail
+p new_list.at(1)
+p new_list.at(2)
+p new_list.at(0)

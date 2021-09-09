@@ -11,7 +11,6 @@ class LinkedList
   attr_accessor :size, :head, :tail
 
   def initialize
-    @size = 0
     @head = nil
     @tail = nil
   end
@@ -22,9 +21,17 @@ class LinkedList
     self.head = new_node unless head
     self.tail = new_node
   end
+
+  def prepend(value)
+    new_node = Node.new(value)
+    new_node.next_node = head
+    self.head = new_node
+    self.tail = new_node unless tail
+  end
 end
 
 new_list = LinkedList.new
-p new_list
-new_list.append(3)
+new_list.prepend(3)
+new_list.prepend(2)
+new_list.prepend(1)
 p new_list

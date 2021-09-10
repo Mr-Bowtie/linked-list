@@ -1,3 +1,5 @@
+require 'pry'
+
 class Node
   attr_accessor :data, :next_node
 
@@ -80,10 +82,28 @@ class LinkedList
     end
     output += 'nil'
   end
+
+  def insert_at(value, index)
+    new_node = Node.new(value)
+    back_node = at(index)
+
+    @head = new_node if at(index) == head()
+    @tail = new_node if at(index) == tail()
+
+    unless index == 0
+      front_node = at(index - 1)
+      front_node.next_node = new_node
+    end
+    new_node.next_node = back_node
+  end
 end
 
 new_list = LinkedList.new
-new_list.prepend(3)
 new_list.prepend(2)
+new_list.append(3)
 new_list.prepend(1)
+p new_list.to_s
+new_list.insert_at(5, 1)
+p new_list.to_s
+new_list.insert_at(2, 0)
 p new_list.to_s

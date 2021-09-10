@@ -1,5 +1,3 @@
-require 'pry'
-
 class Node
   attr_accessor :data, :next_node
 
@@ -88,6 +86,9 @@ class LinkedList
   end
 
   def insert_at(value, index)
+    return nil if index > size - 1
+    return nil if index.abs > size
+
     new_node = Node.new(value)
     back_node = at(index)
 
@@ -103,6 +104,7 @@ class LinkedList
 
   def remove_at(index)
     return nil if index > size - 1
+    return nil if index.abs > size
     trash_node = at(index)
     front_node = at(index - 1) unless index == 0
     back_node = at(index + 1) unless index == size - 1
@@ -118,10 +120,3 @@ class LinkedList
     trash_node.next_node = nil
   end
 end
-
-new_list = LinkedList.new
-new_list.prepend(2)
-new_list.append(3)
-new_list.prepend(1)
-p new_list.to_s
-p new_list.at(-2)

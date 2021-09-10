@@ -67,11 +67,16 @@ class LinkedList
     end
     false
   end
+
+  def find(value)
+    0.upto(size - 1) { |i| return i if self.at(i).data == value }
+    nil
+  end
 end
 
 new_list = LinkedList.new
 new_list.prepend(3)
 new_list.prepend(2)
 new_list.prepend(1)
-p new_list.contains?(3)
-p new_list.contains?(5)
+p new_list.find(2)
+p new_list.find(5)

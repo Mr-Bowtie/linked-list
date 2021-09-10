@@ -96,14 +96,35 @@ class LinkedList
     end
     new_node.next_node = back_node
   end
+
+  def remove_at(index)
+    return nil if index > size - 1
+    trash_node = at(index)
+    front_node = at(index - 1) unless index == 0
+    back_node = at(index + 1) unless index == size - 1
+    case index
+    when 0
+      @head = back_node
+    when size - 1
+      front_node.next_node = nil
+      @tail = front_node
+    else
+      front_node.next_node = back_node
+    end
+    trash_node.next_node = nil
+  end
 end
 
 new_list = LinkedList.new
 new_list.prepend(2)
 new_list.append(3)
 new_list.prepend(1)
-p new_list.to_s
 new_list.insert_at(5, 1)
-p new_list.to_s
 new_list.insert_at(2, 0)
+p new_list.to_s
+new_list.remove_at(5)
+p new_list.to_s
+new_list.remove_at(0)
+p new_list.to_s
+new_list.remove_at(3)
 p new_list.to_s

@@ -53,12 +53,17 @@ class LinkedList
     end
     current_node
   end
+
+  def pop
+    self.at(size - 2).next_node = nil
+    @tail = self.at(size - 1)
+  end
 end
 
 new_list = LinkedList.new
 new_list.prepend(3)
 new_list.prepend(2)
 new_list.prepend(1)
-p new_list.at(1)
-p new_list.at(2)
-p new_list.at(0)
+p new_list
+new_list.pop
+p new_list

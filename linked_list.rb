@@ -72,11 +72,18 @@ class LinkedList
     0.upto(size - 1) { |i| return i if self.at(i).data == value }
     nil
   end
+
+  def to_s
+    output = ''
+    0.upto(size - 1) do |i|
+      output += "( #{self.at(i).data} ) -> "
+    end
+    output += 'nil'
+  end
 end
 
 new_list = LinkedList.new
 new_list.prepend(3)
 new_list.prepend(2)
 new_list.prepend(1)
-p new_list.find(2)
-p new_list.find(5)
+p new_list.to_s

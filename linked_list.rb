@@ -49,8 +49,12 @@ class LinkedList
   end
 
   def at(index)
+    return nil if index > size - 1
+    return nil if index.abs > size #checking for negative numbers outside of list bounds
+
     current_node = @head
-    1.upto(index) do
+    destination = index < 0 ? (size) - index.abs : index
+    1.upto(destination) do
       current_node = current_node.next_node
     end
     current_node
@@ -119,12 +123,5 @@ new_list = LinkedList.new
 new_list.prepend(2)
 new_list.append(3)
 new_list.prepend(1)
-new_list.insert_at(5, 1)
-new_list.insert_at(2, 0)
 p new_list.to_s
-new_list.remove_at(5)
-p new_list.to_s
-new_list.remove_at(0)
-p new_list.to_s
-new_list.remove_at(3)
-p new_list.to_s
+p new_list.at(-2)
